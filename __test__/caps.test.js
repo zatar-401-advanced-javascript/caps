@@ -2,7 +2,7 @@
 const caps = require('../caps');
 jest.spyOn(global.console,'log');
 
-describe('CAPS',()=>{
+xdescribe('CAPS',()=>{
   it('logger method for pickup event',()=>{
     caps.emit('pickup','test');
     expect(console.log).toHaveBeenCalled();

@@ -1,4 +1,5 @@
-# LAB - Class 16
+# LAB - Class 17
+
 
 ## Project: CAPS
 
@@ -16,10 +17,12 @@
 i.e.
 
 - `STORE_NAME` - Store name
+- `HOST` - Host of server
+- `PORT` - Port to connect CAP server
 
 #### How to initialize/run your application (where applicable)
 
-- `npm i dotenv faker`
+- `npm i dotenv faker uuid`
 - e.g. `npm start`
 
 #### How to use your library (where applicable)
