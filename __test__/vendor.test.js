@@ -3,19 +3,19 @@
 
 xdescribe('Vendor Module',()=>{
   beforeEach(() => {
-    jest.spyOn(global.console,'log');
-    jest.useFakeTimers();
+    // jest.spyOn(global.console,'log');
+    // jest.useFakeTimers();
   });
   it('VENDOR log when deliver is done',()=>{
-    const payload = {orderID:'test'};
-    vendor.emit('delivered',payload);
-    expect(console.log).toHaveBeenCalledWith(`VENDOR: Thanks you for delivering ${payload.orderID}`);
+    // const payload = {orderID:'test'};
+    // vendor.emit('delivered',payload);
+    // expect(console.log).toHaveBeenCalledWith(`VENDOR: Thanks you for delivering ${payload.orderID}`);
   });
   it('emit for pickup',()=>{
-    const payload = {orderID:'test'};
-    vendor.on('pickup',payload=>{console.log('test');});
-    vendor.emit('pickup',payload);
-    jest.runAllTimers();
-    expect(console.log).toHaveBeenCalledWith(`test`);
+    // const payload = {orderID:'test'};
+    // vendor.on('pickup',payload=>{console.log('test');});
+    // vendor.emit('pickup',payload);
+    // jest.runAllTimers();
+    // expect(console.log).toHaveBeenCalledWith(`test`);
   });
 });
