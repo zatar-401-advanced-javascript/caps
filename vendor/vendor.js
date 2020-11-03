@@ -1,26 +1,22 @@
 'use strict';
 const faker = require('faker');
 require('dotenv').config();
-const net = require('net');
-const client = new net.Socket();
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 4000;
+const io = require('socket.io-client');
+const caps = io.connect('http://localhost:4000/caps');
+
 const storeName = process.env.STORE_NAME || 'test';
 
-client.connect(PORT, HOST, () => {
-  console.log('Vendor Connected');
-  setInterval(function(){
-    let message = JSON.stringify({event:'pickup',payload:{storeName, orderID: faker.random.uuid(), customer:faker.name.findName(), address:faker.address.streetAddress()}})
-    client.write(message);
-}, 5000);
+caps.on('connect', () => {
 
-client.on('data', (bufferData) => {
-  const dataObj = JSON.parse(bufferData);
-  if (dataObj.event === 'delivered') {
-    console.log(`Thanks you for delivering ${dataObj.payload.orderID}`)
-  }
-});
+  caps.emit('join', storeName);
 
-  client.on('close', () => console.log('Connection closed!'));
-  client.on('error', (err) => console.log('Logger Error', err.message));
-});
+  setInterval(function () {
+    let payload = { storeName, orderID: faker.random.uuid(), customer: faker.name.findName(), address: faker.address.streetAddress() }
+    caps.emit('pickup',payload)
+  }, 5000)
+
+  caps.on('delivered',(payload)=>{
+      console.log(`Thanks you for delivering ${payload.orderID}`)
+  })
+
+})

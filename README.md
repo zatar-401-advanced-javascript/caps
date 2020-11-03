@@ -1,5 +1,4 @@
-# LAB - Class 17
-
+# LAB - Class 18
 
 ## Project: CAPS
 
@@ -22,7 +21,7 @@ i.e.
 
 #### How to initialize/run your application (where applicable)
 
-- `npm i dotenv faker uuid`
+- `npm i dotenv faker socket.io socket.io-client`
 - e.g. `npm start`
 
 #### How to use your library (where applicable)
